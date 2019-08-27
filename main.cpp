@@ -2,18 +2,15 @@
 
 int SelectionSort(int *array){
     int min = array[0];
-    int SortedArray[sizeof(array)];
-    for (int i=0; i < sizeof(array);i++){
-        if (array[i]<min)
-        {
-            min = array[i];
-        }
-        for (int j = 0; j < sizeof(array); i++)
-        {
-            SortedArray[j] = min;
-        }
-        
-        
+    for (int i = 0; i < sizeof(array) - 1; i++){
+        for (int j = i + 1; j < sizeof(array); j++){
+            if (array[i]>array[j]){
+                int aux;
+                aux = array[i];
+                array[i] = array[j];
+                array[j] = aux;
+            }            
+        }        
     }
     return array;
 }
