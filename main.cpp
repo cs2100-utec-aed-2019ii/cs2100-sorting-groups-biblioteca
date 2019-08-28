@@ -1,23 +1,22 @@
 #include <iostream>
 #include <time.h>
+using namespace std;
 
 template <typename T>
 class Sorting {
 private:
-    T* lista;
+    T* lista = nullptr;
+    int tamano;
 public:
-    Sorting(/* args */);
-    ~Sorting();
+    Sorting(int tamano): tamano(tamano){
+        lista = new T(tamano);
+    }
+    ~Sorting(){
+        delete lista;
+    }
 
     T* get_lista(){ return lista; }
 
-    void printArray(int size)
-    {
-        for (int i=0; i < size; i++)
-            cout <<  lista[i+1] << ' ';
-        cout << endl;
-    }
-    
     void Merge(int p, int q,int r)
     {
 
@@ -61,6 +60,7 @@ public:
         }
     }
 
+
     void MergeSort(int p,int r)
     {
         int q;
@@ -73,7 +73,7 @@ public:
         }
     }
 
-        void heapify(int n, int i)
+    void heapify(int n, int i)
     {
         int largest = i;
         int l = 2*i + 1;
@@ -105,6 +105,14 @@ public:
             heapify(i, 0);
         }
     }
+
+    void printArray()
+    {
+        for (int i=0; i < tamano; i++)
+            cout <<  lista[i] << ' ';
+        cout << endl;
+    }
+
 };
 
 void llenar_int(int* list, int max, int n){
@@ -114,22 +122,22 @@ void llenar_int(int* list, int max, int n){
     }
 }
 
-int main (int, char * []){
-        
+int main() {
+
     cout << "Heap Sort: \n";
-    Sorting<int>* heap_sort = new Sorting<int>(16);
-    llenar_int(heap_sort->get_lista(),50,16);
+    Sorting<int>* heap_sort = new Sorting<int>(10);
+    llenar_int(heap_sort->get_lista(),10,10);
     heap_sort->printArray();
     heap_sort->heapSort();
     heap_sort->printArray();
 
-    
+
     cout << "Merge Sort: \n";
     Sorting<int>* merge_sort = new Sorting<int>(16);
     llenar_int(merge_sort->get_lista(),50,16);
     merge_sort->printArray();
     merge_sort->MergeSort(0,16);
     merge_sort->printArray();
-    
-    return 1;
+
+    return 0;
 }
