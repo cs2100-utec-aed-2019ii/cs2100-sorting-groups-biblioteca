@@ -8,6 +8,8 @@ private:
 public:
     Sorting(/* args */);
     ~Sorting();
+
+    T* get_lista(){ return lista; }
 };
 
 void llenar_int(List<int>* lista,int max,int n){
@@ -19,6 +21,7 @@ void llenar_int(List<int>* lista,int max,int n){
 }
 
 int main (int, char * []){
-    List<int>* lista = new List<int>();
+    Sorting<int>* lista = new Sorting<int>();
+    llenar_int(lista->get_lista(),50,20);
     return 1;
 }
