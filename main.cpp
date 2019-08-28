@@ -38,6 +38,20 @@ public:
         }
     }
 
+    void SelectionSort(){
+        int min = lista[0];
+        for (int i = 0; i < tamano - 1; i++){
+            for (int j = i + 1; j < tamano; j++){
+                if (lista[i]>lista[j]){
+                    int aux;
+                    aux = lista[i];
+                    lista[i] = lista[j];
+                    lista[j] = aux;
+                }            
+            }        
+        }
+    }
+
     void Merge(int p, int q,int r)
     {
 
