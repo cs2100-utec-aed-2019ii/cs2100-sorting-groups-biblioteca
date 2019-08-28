@@ -17,6 +17,27 @@ public:
 
     T* get_lista(){ return lista; }
 
+    void InsertSort(){
+        int contador = 0;
+        int aux = 0;
+        for (int i = 1; i < tamano; i++){
+            if (lista[i] < lista[i-1]){
+                aux = lista[i];
+                for (int j = i-1; j >= 0; j--){
+                    if(aux < lista[j]){
+                        for (int k = 0; k < i-j; k++)
+                        {
+                            lista[i-k] = lista[j-k];
+                        }
+                    }
+                    contador = j;
+                }
+                lista[contador] = aux;
+                contador = 0;
+            }      
+        }
+    }
+
     void Merge(int p, int q,int r)
     {
 
