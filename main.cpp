@@ -10,7 +10,7 @@ int InsertSort(int *array, int size){
                 if(aux < array[j]){
                     for (int k = 0; k < i-j; k++)
                     {
-                        array[i-k] = array[j-k]
+                        array[i-k] = array[j-k];
                     }
                 }
                 contador = j;
