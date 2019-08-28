@@ -11,13 +11,13 @@ public:
 
     T* get_lista(){ return lista; }
 
-<<<<<<< HEAD
     void printArray(int size)
     {
         for (int i=0; i < size; i++)
             cout <<  lista[i+1] << ' ';
         cout << endl;
-=======
+    }
+    
     T Merge(int p, int q,int r)
     {
 
@@ -71,7 +71,6 @@ public:
             MergeSort(q+1,r);
             Merge(p,q,r);
         }
->>>>>>> MergeSort
     }
 };
 
@@ -86,6 +85,7 @@ void llenar_int(List<int>* lista,int max,int n){
 int main (int, char * []){
     Sorting<int>* lista = new Sorting<int>();
     llenar_int(lista->get_lista(),50,20);
+    lista->MergeSort(0,20);
     lista->printArray(20);
     return 1;
 }
