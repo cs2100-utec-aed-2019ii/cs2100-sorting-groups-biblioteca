@@ -10,6 +10,13 @@ public:
     ~Sorting();
 
     T* get_lista(){ return lista; }
+
+    void printArray(int size)
+    {
+        for (int i=0; i < size; i++)
+            cout <<  lista[i+1] << ' ';
+        cout << endl;
+    }
 };
 
 void llenar_int(List<int>* lista,int max,int n){
