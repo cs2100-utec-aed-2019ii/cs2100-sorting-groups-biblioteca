@@ -104,7 +104,20 @@ public:
             heapify(i, 0);
         }
     }
-
+    
+    void Bubblesort(){
+        int var_last = tamano-1;
+        for (int i=0; i<var_last;i++){
+            for(int j=var_size-1; j>i;j--){
+                if(lista[j-1]>lista[j]) {
+                    int var_temp;
+                    var_temp= lista[j-1];
+                    lista[j-1]=lista[j];
+                    lista[j]= var_temp;
+                }}
+        }
+    }
+    
     void printArray()
     {
         for (int i=0; i < tamano; i++)
