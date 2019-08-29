@@ -143,7 +143,7 @@ public:
     void Bubblesort(){
         int var_last = tamano-1;
         for (int i=0; i<var_last;i++){
-            for(int j=var_last; j>i;j--){
+            for(int j=var_size-1; j>i;j--){
                 if(lista[j-1]>lista[j]) {
                     int var_temp;
                     var_temp= lista[j-1];
@@ -196,7 +196,7 @@ int main() {
     Sorting<int>* heap_sort = new Sorting<int>(10);
     llenar_int(heap_sort->get_lista(),10,10);
     heap_sort->printArray();
-    heap_sort->HeapSort();
+    heap_sort->heapSort();
     heap_sort->printArray();
 
 
