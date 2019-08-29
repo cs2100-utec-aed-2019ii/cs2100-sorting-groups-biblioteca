@@ -17,6 +17,7 @@ public:
 
     T* get_lista(){ return lista; }
 
+<<<<<<< HEAD
     void InsertSort(){
         int contador = 0;
         int aux = 0;
@@ -52,9 +53,10 @@ public:
         }
     }
 
+=======
+>>>>>>> develop
     void Merge(int p, int q,int r)
     {
-
         int n1,n2,i,j,k;
 
         n1=q-p+1;
@@ -140,7 +142,41 @@ public:
             heapify(i, 0);
         }
     }
-
+    
+    void Bubblesort(){
+        int var_last = tamano-1;
+        for (int i=0; i<var_last;i++){
+            for(int j=var_size-1; j>i;j--){
+                if(lista[j-1]>lista[j]) {
+                    int var_temp;
+                    var_temp= lista[j-1];
+                    lista[j-1]=lista[j];
+                    lista[j]= var_temp;
+                }}
+        }
+    }
+    void Quick_sort(int lista, int min_position, int max_position){
+        int pivot = myArray[(min_position + max_position) / 2];
+        int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
+        while (values_left_to_pivot < values_right_to_pivot) {
+            while (lista[values_left_to_pivot] < pivot )
+                values_left_to_pivot++;
+            while( myArray[values_right_to_pivot] > pivot)
+                values_right_to_pivot--;
+            if (left <= right) {
+                int var_temp;
+                var_temp = lista[values_left_to_pivot];
+                lista[values_left_to_pivot]=lista[values_right_to_pivot];
+                lista[values_right_to_pivot]=var_temp;
+                values_left_to_pivot++;
+                values_right_to_pivot--;
+        }}
+        if (min_position < values_right_to_pivot)
+            Quick_sort(lista, min_position, values_right_to_pivot);
+        if (max_position > values_left_to_pivot)
+            Quick_sort(lista, values_left_to_pivot, max_position);
+    }
+    
     void printArray()
     {
         for (int i=0; i < tamano; i++)
