@@ -34,7 +34,7 @@ public:
                 }
                 lista[contador] = aux;
                 contador = 0;
-            }      
+            }
         }
     }
 
@@ -47,14 +47,13 @@ public:
                     aux = lista[i];
                     lista[i] = lista[j];
                     lista[j] = aux;
-                }            
-            }        
+                }
+            }
         }
     }
 
     void Merge(int p, int q,int r)
     {
-
         int n1,n2,i,j,k;
 
         n1=q-p+1;
@@ -108,7 +107,7 @@ public:
         }
     }
 
-    void heapify(int n, int i)
+    void Heapify(int n, int i)
     {
         int largest = i;
         int l = 2*i + 1;
@@ -124,21 +123,55 @@ public:
         {
             swap(lista[i], lista[largest]);
 
-            heapify(n, largest);
+            Heapify(n, largest);
         }
     }
 
-    void heapSort()
+    void HeapSort()
     {
         for (int i = tamano / 2 - 1; i >= 0; i--)
-            heapify(tamano, i);
+            Heapify(tamano, i);
 
         for (int i=tamano-1; i>=0; i--)
         {
             swap(lista[0], lista[i]);
 
-            heapify(i, 0);
+            Heapify(i, 0);
         }
+    }
+
+    void Bubblesort(){
+        int var_last = tamano-1;
+        for (int i=0; i<var_last;i++){
+            for(int j=var_size-1; j>i;j--){
+                if(lista[j-1]>lista[j]) {
+                    int var_temp;
+                    var_temp= lista[j-1];
+                    lista[j-1]=lista[j];
+                    lista[j]= var_temp;
+                }}
+        }
+    }
+    void Quick_sort(int min_position, int max_position){
+        int pivot = lista[(min_position + max_position) / 2];
+        int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
+        while (values_left_to_pivot < values_right_to_pivot) {
+            while (lista[values_left_to_pivot] < pivot )
+                values_left_to_pivot++;
+            while( lista[values_right_to_pivot] > pivot)
+                values_right_to_pivot--;
+            if (left <= right) {
+                int var_temp;
+                var_temp = lista[values_left_to_pivot];
+                lista[values_left_to_pivot]=lista[values_right_to_pivot];
+                lista[values_right_to_pivot]=var_temp;
+                values_left_to_pivot++;
+                values_right_to_pivot--;
+            }}
+        if (min_position < values_right_to_pivot)
+            Quick_sort(min_position, values_right_to_pivot);
+        if (max_position > values_left_to_pivot)
+            Quick_sort(values_left_to_pivot, max_position);
     }
 
     void printArray()
@@ -173,6 +206,20 @@ int main() {
     merge_sort->printArray();
     merge_sort->MergeSort(0,16);
     merge_sort->printArray();
+
+    /*cout<<"Quick Sort: \n";
+    Sorting<int>* quick_sort = new Sorting<int>(10);
+    llenar_int(quick_sort->get_lista(),10,10);
+    quick_sort->printArray();
+    quick_sort->Quick_sort(0,10);
+    quick_sort->printArray();*/
+
+    /*cout<<"Bubblesort: \n";
+    Sorting<int>* bubblesort = new Sorting<int>(10);
+    llenar_int(bubblesort->get_lista(),20,10);
+    bubblesort->printArray();
+    bubblesort->Bubblesort();
+    bubblesort->printArray();*/
 
     return 0;
 }
