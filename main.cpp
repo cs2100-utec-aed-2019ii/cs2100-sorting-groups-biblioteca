@@ -161,26 +161,33 @@ public:
         }
     }
 
-    void Quick_sort(int min_position, int max_position){
-        int pivot = lista[(min_position + max_position) / 2];
-        int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
-        while (values_left_to_pivot < values_right_to_pivot) {
-            while (lista[values_left_to_pivot] < pivot )
-                values_left_to_pivot++;
-            while( lista[values_right_to_pivot] > pivot)
-                values_right_to_pivot--;
-            if (left <= right) {
-                int var_temp;
-                var_temp = lista[values_left_to_pivot];
-                lista[values_left_to_pivot]=lista[values_right_to_pivot];
-                lista[values_right_to_pivot]=var_temp;
-                values_left_to_pivot++;
-                values_right_to_pivot--;
-            }}
-        if (min_position < values_right_to_pivot)
-            Quick_sort(min_position, values_right_to_pivot);
-        if (max_position > values_left_to_pivot)
-            Quick_sort(values_left_to_pivot, max_position);
+    int partition (int low, int high)
+    {
+        T pivot = lista[high];
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++)
+        {
+            if (lista[j] < pivot)
+            {
+                i++;
+                swap(lista[i], lista[j]);
+            }
+        }
+        swap(lista[i + 1], lista[high]);
+        return (i + 1);
+    }
+
+    void quickSort(int low, int high)
+    {
+        if (low < high)
+        {
+
+            int pi = partition(low, high);
+
+            quickSort(low, pi - 1);
+            quickSort(pi + 1, high);
+        }
     }
 
     void printArray()
@@ -199,7 +206,7 @@ int main(int, char*[]) {
     Sorting<char>* quick_sort = new Sorting<char>(16);
     quick_sort->set_lista(array0);
     quick_sort->printArray();
-    quick_sort->Quick_sort(0,16);
+    quick_sort->quickSort(0,15);
     quick_sort->printArray();
 
     char array1[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
@@ -248,4 +255,4 @@ int main(int, char*[]) {
     merge_sort->printArray();
 
     return 1;
-}
+}s
