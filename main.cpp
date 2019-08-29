@@ -107,7 +107,7 @@ public:
         }
     }
 
-    void heapify(int n, int i)
+    void Heapify(int n, int i)
     {
         int largest = i;
         int l = 2*i + 1;
@@ -123,20 +123,20 @@ public:
         {
             swap(lista[i], lista[largest]);
 
-            heapify(n, largest);
+            Heapify(n, largest);
         }
     }
 
-    void heapSort()
+    void HeapSort()
     {
         for (int i = tamano / 2 - 1; i >= 0; i--)
-            heapify(tamano, i);
+            Heapify(tamano, i);
 
         for (int i=tamano-1; i>=0; i--)
         {
             swap(lista[0], lista[i]);
 
-            heapify(i, 0);
+            Heapify(i, 0);
         }
     }
     
