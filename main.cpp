@@ -17,7 +17,6 @@ public:
 
     T* get_lista(){ return lista; }
 
-<<<<<<< HEAD
     void InsertSort(){
         int contador = 0;
         int aux = 0;
@@ -53,8 +52,6 @@ public:
         }
     }
 
-=======
->>>>>>> develop
     void Merge(int p, int q,int r)
     {
         int n1,n2,i,j,k;
