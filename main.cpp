@@ -9,11 +9,9 @@ private:
     T* lista = nullptr;
     int tamano;
 public:
-    Sorting(int tamano): tamano(tamano){
+    Sorting(int tamano_){
+        tamano = tamano_;
         lista = new T(tamano);
-    }
-    ~Sorting(){
-        delete lista;
     }
 
     T* get_lista(){ return lista; }
@@ -181,6 +179,10 @@ public:
         for (int i=0; i < tamano; i++)
             cout <<  lista[i] << ' ';
         cout << endl;
+    }
+
+    ~Sorting(){
+        delete lista;
     }
 
 };
