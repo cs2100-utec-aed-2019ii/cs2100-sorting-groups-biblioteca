@@ -186,15 +186,17 @@ public:
 };
 int main(int, char*[]) {
 
-    char array1[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
-/*
+    char array0[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
+
     cout<<"Quick Sort: \n";
-    Sorting<char>* quick_sort = new Sorting<char>(3);
-    quick_sort->set_lista(array);
+    Sorting<char>* quick_sort = new Sorting<char>(16);
+    quick_sort->set_lista(array0);
     quick_sort->printArray();
-    quick_sort->Quick_sort(0,10);
+    quick_sort->Quick_sort(0,16);
     quick_sort->printArray();
-*/
+
+    char array1[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
+
     cout << "Buble Sort: \n";
     Sorting<char>* buble_sort = new Sorting<char>(16);
     buble_sort->set_lista(array1);
