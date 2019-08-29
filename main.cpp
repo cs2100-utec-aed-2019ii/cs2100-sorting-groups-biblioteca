@@ -17,30 +17,8 @@ public:
 
     T* get_lista(){ return lista; }
 
-    void InsertSort(){
-        int contador = 0;
-        int aux = 0;
-        for (int i = 1; i < tamano; i++){
-            if (lista[i] < lista[i-1]){
-                aux = lista[i];
-                for (int j = i-1; j >= 0; j--){
-                    if(aux < lista[j]){
-                        for (int k = 0; k < i-j; k++)
-                        {
-                            lista[i-k] = lista[j-k];
-                        }
-                    }
-                    contador = j;
-                }
-                lista[contador] = aux;
-                contador = 0;
-            }      
-        }
-    }
-
     void Merge(int p, int q,int r)
     {
-
         int n1,n2,i,j,k;
 
         n1=q-p+1;
@@ -126,7 +104,20 @@ public:
             heapify(i, 0);
         }
     }
-
+    
+    void Bubblesort(){
+        int var_last = tamano-1;
+        for (int i=0; i<var_last;i++){
+            for(int j=var_size-1; j>i;j--){
+                if(lista[j-1]>lista[j]) {
+                    int var_temp;
+                    var_temp= lista[j-1];
+                    lista[j-1]=lista[j];
+                    lista[j]= var_temp;
+                }}
+        }
+    }
+    
     void printArray()
     {
         for (int i=0; i < tamano; i++)
