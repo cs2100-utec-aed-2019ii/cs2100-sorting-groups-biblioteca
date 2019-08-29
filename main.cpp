@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <time.h>
 using namespace std;
 
@@ -17,14 +18,17 @@ public:
 
     T* get_lista(){ return lista; }
 
+    void set_lista(T* array){lista=array;}
+
     void InsertSort()
     {
-        int i, key, j;
+        int i, j;
+        T key;
         for (i = 1; i < tamano; i++)
         {
             key = lista[i];
             j = i - 1;
-            
+
             while (j >= 0 && lista[j] > key)
             {
                 lista[j + 1] = lista[j];
@@ -50,6 +54,7 @@ public:
 
     void Merge(int p, int q,int r)
     {
+
         int n1,n2,i,j,k;
 
         n1=q-p+1;
@@ -103,7 +108,7 @@ public:
         }
     }
 
-    void Heapify(int n, int i)
+    void heapify(int n, int i)
     {
         int largest = i;
         int l = 2*i + 1;
@@ -119,27 +124,27 @@ public:
         {
             swap(lista[i], lista[largest]);
 
-            Heapify(n, largest);
+            heapify(n, largest);
         }
     }
 
-    void HeapSort()
+    void heapSort()
     {
         for (int i = tamano / 2 - 1; i >= 0; i--)
-            Heapify(tamano, i);
+            heapify(tamano, i);
 
         for (int i=tamano-1; i>=0; i--)
         {
             swap(lista[0], lista[i]);
 
-            Heapify(i, 0);
+            heapify(i, 0);
         }
     }
 
-    void Bubblesort(){
+    void BubbleSort(){
         int var_last = tamano-1;
         for (int i=0; i<var_last;i++){
-            for(int j=var_size-1; j>i;j--){
+            for(int j=tamano-1; j>i;j--){
                 if(lista[j-1]>lista[j]) {
                     int var_temp;
                     var_temp= lista[j-1];
@@ -148,6 +153,7 @@ public:
                 }}
         }
     }
+
     void Quick_sort(int min_position, int max_position){
         int pivot = lista[(min_position + max_position) / 2];
         int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
@@ -178,44 +184,59 @@ public:
     }
 
 };
+int main(int, char*[]) {
 
-void llenar_int(int* list, int max, int n){
-    srand(time(NULL));
-    for(int i = 0; i < n; i++){
-        list[i] = 1 + rand()%(max);
-    }
-}
+    char array1[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
+/*
+    cout<<"Quick Sort: \n";
+    Sorting<char>* quick_sort = new Sorting<char>(3);
+    quick_sort->set_lista(array);
+    quick_sort->printArray();
+    quick_sort->Quick_sort(0,10);
+    quick_sort->printArray();
+*/
+    cout << "Buble Sort: \n";
+    Sorting<char>* buble_sort = new Sorting<char>(16);
+    buble_sort->set_lista(array1);
+    buble_sort->printArray();
+    buble_sort->BubbleSort();
+    buble_sort->printArray();
 
-int main() {
+    char array2[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
+
+    cout << "Insert Sort: \n";
+    Sorting<char>* inser_sort = new Sorting<char>(16);
+    inser_sort->set_lista(array2);
+    inser_sort->printArray();
+    inser_sort->InsertSort();
+    inser_sort->printArray();
+
+    char array3[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
+
+    cout << "Selection Sort: \n";
+    Sorting<char>* selection_sort = new Sorting<char>(16);
+    selection_sort->set_lista(array3);
+    selection_sort->printArray();
+    selection_sort->SelectionSort();
+    selection_sort->printArray();
+
+    char array4[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
 
     cout << "Heap Sort: \n";
-    Sorting<int>* heap_sort = new Sorting<int>(10);
-    llenar_int(heap_sort->get_lista(),10,10);
+    Sorting<char>* heap_sort = new Sorting<char>(16);
+    heap_sort->set_lista(array4);
     heap_sort->printArray();
     heap_sort->heapSort();
     heap_sort->printArray();
 
+    char array5[16] = {'V','I','C','T','O','R','M','A','R','L','O','N','L','U','I','S'};
 
     cout << "Merge Sort: \n";
-    Sorting<int>* merge_sort = new Sorting<int>(16);
-    llenar_int(merge_sort->get_lista(),50,16);
+    Sorting<char>* merge_sort = new Sorting<char>(16);
+    merge_sort->set_lista(array5);
     merge_sort->printArray();
     merge_sort->MergeSort(0,16);
     merge_sort->printArray();
 
-    /*cout<<"Quick Sort: \n";
-    Sorting<int>* quick_sort = new Sorting<int>(10);
-    llenar_int(quick_sort->get_lista(),10,10);
-    quick_sort->printArray();
-    quick_sort->Quick_sort(0,10);
-    quick_sort->printArray();*/
-
-    /*cout<<"Bubblesort: \n";
-    Sorting<int>* bubblesort = new Sorting<int>(10);
-    llenar_int(bubblesort->get_lista(),20,10);
-    bubblesort->printArray();
-    bubblesort->Bubblesort();
-    bubblesort->printArray();*/
-
-    return 0;
+    return 1;
 }
