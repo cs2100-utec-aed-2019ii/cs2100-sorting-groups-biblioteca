@@ -34,7 +34,7 @@ public:
                 }
                 lista[contador] = aux;
                 contador = 0;
-            }      
+            }
         }
     }
 
@@ -47,8 +47,8 @@ public:
                     aux = lista[i];
                     lista[i] = lista[j];
                     lista[j] = aux;
-                }            
-            }        
+                }
+            }
         }
     }
 
@@ -139,7 +139,7 @@ public:
             Heapify(i, 0);
         }
     }
-    
+
     void Bubblesort(){
         int var_last = tamano-1;
         for (int i=0; i<var_last;i++){
@@ -152,7 +152,7 @@ public:
                 }}
         }
     }
-    void Quick_sort(int lista[], int min_position, int max_position){
+    void Quick_sort(int min_position, int max_position){
         int pivot = lista[(min_position + max_position) / 2];
         int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
         while (values_left_to_pivot < values_right_to_pivot) {
@@ -167,13 +167,13 @@ public:
                 lista[values_right_to_pivot]=var_temp;
                 values_left_to_pivot++;
                 values_right_to_pivot--;
-        }}
+            }}
         if (min_position < values_right_to_pivot)
-            Quick_sort(lista, min_position, values_right_to_pivot);
+            Quick_sort(min_position, values_right_to_pivot);
         if (max_position > values_left_to_pivot)
-            Quick_sort(lista, values_left_to_pivot, max_position);
+            Quick_sort(values_left_to_pivot, max_position);
     }
-    
+
     void printArray()
     {
         for (int i=0; i < tamano; i++)
@@ -206,6 +206,20 @@ int main() {
     merge_sort->printArray();
     merge_sort->MergeSort(0,16);
     merge_sort->printArray();
+
+    /*cout<<"Quick Sort: \n";
+    Sorting<int>* quick_sort = new Sorting<int>(10);
+    llenar_int(quick_sort->get_lista(),10,10);
+    quick_sort->printArray();
+    quick_sort->Quick_sort(0,10);
+    quick_sort->printArray();*/
+
+    /*cout<<"Bubblesort: \n";
+    Sorting<int>* bubblesort = new Sorting<int>(10);
+    llenar_int(bubblesort->get_lista(),20,10);
+    bubblesort->printArray();
+    bubblesort->Bubblesort();
+    bubblesort->printArray();*/
 
     return 0;
 }
