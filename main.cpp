@@ -70,28 +70,35 @@ public:
         {
             R[j]=lista[q+j+1];
         }
-        i=0,j=0;
+        i=0,j=0,k=p;
 
-        for(k=p;i<n1&&j<n2;k++)
+        while (i < n1 && j < n2)
         {
-            if(L[i]<R[j])
+            if (L[i] <= R[j])
             {
-                lista[k]=L[i++];
+                lista[k] = L[i];
+                i++;
             }
             else
             {
-                lista[k]=R[j++];
+                lista[k] = R[j];
+                j++;
             }
+            k++;
         }
 
         while(i<n1)
         {
-            lista[k++]=L[i++];
+            lista[k]=L[i];
+            k++;
+            i++;
         }
 
         while(j<n2)
         {
-            lista[k++]=R[j++];
+            lista[k]=R[j];
+            k++;
+            j++;
         }
     }
 
@@ -101,7 +108,7 @@ public:
         int q;
         if(p<r)
         {
-            q=(p+r)/2;
+            q = p+(r-p)/2;
             MergeSort(p,q);
             MergeSort(q+1,r);
             Merge(p,q,r);
@@ -237,7 +244,7 @@ int main(int, char*[]) {
     Sorting<char>* merge_sort = new Sorting<char>(16);
     merge_sort->set_lista(array5);
     merge_sort->printArray();
-    merge_sort->MergeSort(0,16);
+    merge_sort->MergeSort(0,15);
     merge_sort->printArray();
 
     return 1;
