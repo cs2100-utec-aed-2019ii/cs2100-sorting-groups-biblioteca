@@ -117,6 +117,27 @@ public:
                 }}
         }
     }
+    void Quick_sort(int lista, int min_position, int max_position){
+        int pivot = myArray[(min_position + max_position) / 2];
+        int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
+        while (values_left_to_pivot < values_right_to_pivot) {
+            while (lista[values_left_to_pivot] < pivot )
+                values_left_to_pivot++;
+            while( myArray[values_right_to_pivot] > pivot)
+                values_right_to_pivot--;
+            if (left <= right) {
+                int var_temp;
+                var_temp = lista[values_left_to_pivot];
+                lista[values_left_to_pivot]=lista[values_right_to_pivot];
+                lista[values_right_to_pivot]=var_temp;
+                values_left_to_pivot++;
+                values_right_to_pivot--;
+        }}
+        if (min_position < values_right_to_pivot)
+            Quick_sort(lista, min_position, values_right_to_pivot);
+        if (max_position > values_left_to_pivot)
+            Quick_sort(lista, values_left_to_pivot, max_position);
+    }
     
     void printArray()
     {
