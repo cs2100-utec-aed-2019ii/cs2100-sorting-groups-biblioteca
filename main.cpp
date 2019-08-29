@@ -153,12 +153,12 @@ public:
         }
     }
     void Quick_sort(int lista, int min_position, int max_position){
-        int pivot = myArray[(min_position + max_position) / 2];
+        int pivot = lista[(min_position + max_position) / 2];
         int values_left_to_pivot = min_position, values_right_to_pivot = max_position;
         while (values_left_to_pivot < values_right_to_pivot) {
             while (lista[values_left_to_pivot] < pivot )
                 values_left_to_pivot++;
-            while( myArray[values_right_to_pivot] > pivot)
+            while( lista[values_right_to_pivot] > pivot)
                 values_right_to_pivot--;
             if (left <= right) {
                 int var_temp;
